@@ -1,0 +1,92 @@
+﻿@model future_1_.Models.Driver
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<h4>Driver</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="AccessNumber" class="control-label"></label>
+                <input asp-for="AccessNumber" class="form-control" />
+                <span asp-validation-for="AccessNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <select asp-for="State" class="form-control">
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransportationEntityId" class="control-label"></label>
+                <select asp-for="TransportationEntityId" class="form-control" asp-items="ViewBag.TransportationEntityId"></select>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="IdPhoto_File" class="control-label"></label>
+                <input asp-for="IdPhoto_File" accept="image/*" />
+                <span asp-validation-for="IdPhoto_File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverLicense_File" class="control-label"></label>
+                <input asp-for="DriverLicense_File" accept="image/*" />
+                <span asp-validation-for="DriverLicense_File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiseaseFreeCert_File" class="control-label"></label>
+                <input asp-for="DiseaseFreeCert_File" accept="image/*" />
+                <span asp-validation-for="DiseaseFreeCert_File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NonConvictionCert_File" class="control-label"></label>
+                <input asp-for="NonConvictionCert_File" accept="image/*" />
+                <span asp-validation-for="NonConvictionCert_File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecurityPermit_File" class="control-label"></label>
+                <input asp-for="SecurityPermit_File" accept="image/*" />
+                <span asp-validation-for="SecurityPermit_File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonalPhoto_File" class="control-label"></label>
+                <input asp-for="PersonalPhoto_File" accept="image/*" />
+                <span asp-validation-for="PersonalPhoto_File" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AllDrivers">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

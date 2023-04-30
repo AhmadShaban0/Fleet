@@ -1,0 +1,97 @@
+﻿@model future_1_.Models.Fleet
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Fleet</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fleetModel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fleetModel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fleetType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fleetType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BoardNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BoardNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.capacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.capacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.region)
+        </dt>
+        <dd class="col-sm-10">
+            @ViewData["reg"]
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FleetState)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FleetState)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.transportationEntity)
+        </dt>
+        <dd class="col-sm-10">
+            @ViewData["tr"]
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.effectiveness)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.effectiveness)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.driver)
+        </dt>
+        <dd class="col-sm-10">
+            @ViewData["dr"]
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FrontBus_license_File)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.FrontBus_license_PH)" asp-append-version="true" width="250px" height="250px" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BackBus_license_File)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.BackBus_license_PH)" asp-append-version="true" width="250px" height="250px" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AuthorityPermit_File)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.AuthorityPermit_PH)" asp-append-version="true" width="250px" height="250px" />
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.FleetId" class="btn btn-outline-warning">Edit</a> 
+    <a asp-action="AllFleets">Back to List</a>
+</div>

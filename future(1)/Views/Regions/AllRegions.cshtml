@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Region>
+
+@{
+    ViewData["Title"] = "AllRegions";
+}
+
+<h1>All Regions</h1>
+
+<p>
+    <a asp-action="Add" class="btn btn-outline-primary">Add New Regions </a>
+</p>
+<div id="idEmployee">
+    <table class="table table-bordered">
+    <thead style="background-color:cornflowerblue">
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ArabicName)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.EnglishName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.ArabicName)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnglishName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.RegionId" class="btn btn-outline-success">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.RegionId" class="btn btn-outline-warning">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.RegionId" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+
+    @*<form asp-action="ExporttoExcel" asp-controller="Regions" method="post">
+        <input type="hidden" name="HtmlTable" />
+        <input type="submit" id="btnsubmit" value="Export to Excel" class="btn btn-primary" />
+    </form>
+
+
+
+    <script>
+        $(function () {
+            $("#btnsubmit").click(function () {
+                $("input[name='HtmlTable']").val($("#idEmployee").html());
+            });
+        });
+    </script>*@

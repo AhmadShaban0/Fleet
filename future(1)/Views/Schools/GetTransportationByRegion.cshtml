@@ -1,0 +1,15 @@
+﻿@model List<TransportationEntity>
+
+@{
+    ViewData["Title"] = "GetTransportationByRegion";
+}
+
+<ul>
+    @foreach (var transportation in Model)
+    {
+        <li>kkkkk
+            <input type="checkbox" name="transportation"
+                   value="@transportation.TransportationEntityId"> @transportation.EnglishName
+        </li>
+    }
+</ul>

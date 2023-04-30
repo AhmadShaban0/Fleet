@@ -1,0 +1,96 @@
+﻿@model future_1_.Models.Fleet
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<h4>Fleet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="fleetModel" class="control-label"></label>
+                <input asp-for="fleetModel" class="form-control" />
+                <span asp-validation-for="fleetModel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fleetType" class="control-label"></label>
+                <input asp-for="fleetType" class="form-control" />
+                <span asp-validation-for="fleetType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoardNumber" class="control-label"></label>
+                <input asp-for="BoardNumber" class="form-control" />
+                <span asp-validation-for="BoardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="capacity" class="control-label"></label>
+                <input asp-for="capacity" class="form-control" />
+                <span asp-validation-for="capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegionId" class="control-label"></label>
+                <select asp-for="RegionId" class="form-control" asp-items="ViewBag.RegionId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FleetState" class="control-label"></label>
+                <select asp-for="FleetState" class="form-control">
+                    <option value="Allocated">Allocated</option>
+                    <option value="Not allocated">Not allocated</option>
+                </select>
+                <span asp-validation-for="FleetState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransportationEntityId" class="control-label"></label>
+                <select asp-for="TransportationEntityId" class="form-control" asp-items="ViewBag.TransportationEntityId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="effectiveness" class="control-label"></label>
+                <select asp-for="effectiveness" class="form-control">
+                    <option value="Active">Active</option>
+                    <option value="Deleted">Deleted</option>
+                </select>
+                <span asp-validation-for="effectiveness" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DriverId" class="control-label"></label>
+                <select asp-for="DriverId" class="form-control" asp-items="ViewBag.DriverId"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FrontBus_license_File" class="control-label"></label>
+                <input asp-for="FrontBus_license_File" accept="image/*" />
+                <span asp-validation-for="FrontBus_license_File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BackBus_license_File" class="control-label"></label>
+                <input asp-for="BackBus_license_File" accept="image/*" />
+                <span asp-validation-for="BackBus_license_File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorityPermit_File" class="control-label"></label>
+                <input asp-for="AuthorityPermit_File" accept="image/*" />
+                <span asp-validation-for="AuthorityPermit_File" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AllFleets" >Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

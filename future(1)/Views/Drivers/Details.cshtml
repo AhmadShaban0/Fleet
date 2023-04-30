@@ -1,0 +1,106 @@
+﻿@model future_1_.Models.Driver
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Driver</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccessNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccessNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt class="col-sm-2">
+            TransEntity @Html.DisplayNameFor(model => model.trEntity.ArabicName)
+        </dt>
+        <dd class="col-sm-10">
+            @ViewData["tr"]
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fleet.fleetType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fleet.fleetType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fleet.BoardNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fleet.BoardNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fleet.fleetModel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fleet.fleetModel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fleet.capacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fleet.capacity)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdPhoto_File)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.IDPhoto)" asp-append-version="true" width="250px" height="250px" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DriverLicense_File)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.DriverLicense_PH)" asp-append-version="true" width="250px" height="250px" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DiseaseFreeCert_File)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.DiseaseFreeCert_PH)" asp-append-version="true" width="250px" height="250px" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NonConvictionCert_File)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.NonConvictionCert_PH)" asp-append-version="true" width="250px" height="250px" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SecurityPermit_File)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.SecurityPermit_PH)" asp-append-version="true" width="250px" height="250px" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PersonalPhoto_File)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/image/"+Model.PersonalPhoto)" asp-append-version="true" width="250px" height="250px" />
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.DriverId" class="btn btn-outline-warning">Edit</a> 
+    <a asp-action="AllDrivers">Back to List</a>
+</div>

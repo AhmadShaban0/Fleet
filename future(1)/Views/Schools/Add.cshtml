@@ -1,0 +1,166 @@
+﻿@model future_1_.Models.School
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Add</h1>
+
+<h4>School</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@*            <input asp-for="SchoolId"  class="form-control" type="hidden" id="id" />
+*@            <div class="form-group">
+                <label asp-for="ArabicName" class="control-label"></label>
+                <input asp-for="ArabicName" class="form-control" />
+                <span asp-validation-for="ArabicName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnglishName" class="control-label"></label>
+                <input asp-for="EnglishName" class="form-control" />
+                <span asp-validation-for="EnglishName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SchoolType" class="control-label"></label><br />
+
+                <input type="radio" id="Public" name="SchoolType" value="Public">
+                <label for="Public">Public</label><br>
+                <input type="radio" id="Private" name="SchoolType" value="Private">
+                <label for="Private">Private</label><br>
+                <span asp-validation-for="SchoolType" class="text-danger"></span>
+            </div>
+
+            <p>School Logo:</p>
+            <div class="form-group">
+                <label asp-for="LogoFile" class="control-label"></label>
+                <input asp-for="LogoFile" accept="image/*" />
+                <span asp-validation-for="LogoFile" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Region" class="control-label"></label>
+
+                <select asp-for="RegionId" id="region" onchange="MyFun()" class="form-control" asp-items="ViewBag.MyRegions" class="form-control">
+                </select>
+                <span asp-validation-for="RegionId" class="text-danger"></span>
+            </div>
+           
+            
+
+
+            <label id="LabelID3"></label>
+           <br />
+
+
+
+
+            <label id="TR-label" class="control-label"></label>
+
+            <div id="myCheckboxs"  class="form-group" >         
+            </div>
+            <span asp-validation-for="transportationEntities" class="text-danger"></span>
+
+                
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                  var TR =   @Html.Raw(Json.Serialize(@ViewBag.tr));
+            TR = JSON.parse(TR);
+   //         console.log(TR);
+                document.getElementById('TR-label').innerHTML ="";
+
+                
+
+                var count =0;
+            function MyFun() {
+
+
+                    document.getElementById('TR-label').innerHTML = "Transportation Entities";
+                    var selectedItem = document.getElementById('region').value;
+                    var myCheck = document.getElementById('myCheckboxs');
+                    myCheck.innerHTML="";
+                   count=0;
+                for (var i = 0; i < TR.length; i++) {
+                        if (selectedItem == TR[i].RegionId) {
+
+                            var checkbox = document.createElement("input");
+                            checkbox.id=""+count;
+                            checkbox.type = "checkbox";
+                            checkbox.value = TR[i].TransportationEntityId;
+                            checkbox.name = "checkbox_" + count;
+                            myCheck.appendChild(checkbox);
+
+                            var label = document.createElement("label");
+                            label.innerHTML = TR[i].EnglishName;
+                            label.setAttribute("for", "checkbox_" + count);
+                            myCheck.appendChild(label);
+
+                            var br = document.createElement("br");
+                            myCheck.appendChild(br);
+                           count++; 
+                    }
+                 }
+            }
+            
+           function sendList() {
+                    var listt = [];
+                    //   var SchoolID = document.getElementById('id').value;
+
+                    for(var i=0;i<count;i++){
+                        if(document.getElementById(""+i).checked){
+                        var TRid = document.getElementById(""+i).value;
+                        listt.push(TRid);
+                        }
+                    }
+
+    $.ajax({
+        url: "/Schools/wwww",
+        type: "POST",
+        data: { items: listt},
+        success: function (result) {}
+    });
+}
+            //var myModelList = Html.Raw(Json .Serialize(Model.transportationEntities));
+            //   myModelList = JSON.parse(myModelList);
+
+           
+    //function my() { 
+        
+    //                var selectedItem = document.getElementById('region').value;
+
+    //                for (var i = 0; i < TR.length; i++) {
+    //                    if (selectedItem == TR[i].RegionId) {
+    //                        if (document.getElementById(`${i}`).checked == true) {
+    //                           myModelList.push(TR[i]);
+    //                            Model.transportationEntities.Add(TR[i]);
+    //                        }
+    //                    }
+    //                }
+    //            }
+            </script>
+
+
+                     
+
+
+
+            <div class="form-group">
+                <input type="submit" onclick="sendList()" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AllSchools" class="btn btn-primary">Back to List</a>
+</div>
+

@@ -1,0 +1,55 @@
+﻿@model future_1_.Models.Driver
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Driver</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DriverId" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccessNumber" class="control-label"></label>
+                <input asp-for="AccessNumber" class="form-control" />
+                <span asp-validation-for="AccessNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <select asp-for="State" class="form-control">
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TransportationEntityId" class="control-label"></label>
+                <select asp-for="TransportationEntityId" class="form-control" asp-items="ViewBag.TransportationEntityId"></select>
+                <span asp-validation-for="TransportationEntityId" class="text-danger"></span>
+            </div>
+            <input asp-for="password" class="form-control" type="hidden" />
+    
+            <div class="form-group">
+                <input type="submit"  value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AllDrivers">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
